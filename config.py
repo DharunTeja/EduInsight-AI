@@ -52,7 +52,7 @@ MEDIUM_RISK_THRESHOLD = 0.7  # 0.4 ≤ P(pass) < 0.7 → Medium Risk
 # ============================================================
 # APPLICATION SETTINGS
 # ============================================================
-APP_TITLE = "🎓 AI Student Performance Predictor"
+APP_TITLE = " AI Student Performance Predictor"
 APP_ICON = "🎓"
 APP_LAYOUT = "wide"  # Use wide layout for better dashboard visualization
 

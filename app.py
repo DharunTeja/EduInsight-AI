@@ -398,10 +398,7 @@ with st.sidebar:
     <div style="text-align: center; padding: 20px 0;">
         <div style="font-size: 2.5rem;">🎓</div>
         <div style="font-size: 1.1rem; font-weight: 700; color: #00C896; margin-top: 8px;">
-            AI Performance Predictor
-        </div>
-        <div style="font-size: 0.75rem; color: #8888a0; margin-top: 4px;">
-            Academic Risk Analysis System
+            AI Student Performance Predictor & Academic Risk Analysis System
         </div>
     </div>
     <div class="custom-divider"></div>
@@ -423,6 +420,6 @@ with st.sidebar:
 st.markdown("""
 <div style="text-align: center; padding: 30px 0 10px 0; color: #555580; font-size: 0.75rem;">
     AI-Based Student Performance Prediction & Academic Risk Analysis System<br>
-    Built with ❤️ using Streamlit, Scikit-Learn & Python
+    Built with using Streamlit, Scikit-Learn & Python
 </div>
 """, unsafe_allow_html=True)
