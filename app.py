@@ -242,7 +242,7 @@ st.markdown("""
 # The main welcome banner with project title and description
 st.markdown("""
 <div style="text-align: center; padding: 40px 0 20px 0;">
-    <div class="hero-title">🎓 AI Student Performance Predictor</div>
+    <div class="hero-title">🎓 EduInsight AI</div>
     <div class="hero-subtitle">
         Intelligent Academic Analytics Platform — Predict Performance • Identify Risk • Generate Recommendations
     </div>
