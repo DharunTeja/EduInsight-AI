@@ -268,8 +268,8 @@ if uploaded_file is not None:
             m1, m2, m3, m4 = st.columns(4)
             
             total = len(results_df)
-            pass_count = (results_df["prediction"] == "Pass").sum()
-            fail_count = (results_df["prediction"] == "Fail").sum()
+            pass_count = (results_df["Prediction"] == "Pass").sum()
+            fail_count = (results_df["Prediction"] == "Fail").sum()
             
             with m1:
                 st.metric("Total Students", f"{total}")
@@ -278,7 +278,7 @@ if uploaded_file is not None:
             with m3:
                 st.metric("Predicted Fail", f"{fail_count}", delta=f"-{fail_count/total*100:.1f}%")
             with m4:
-                high_risk = (results_df["risk_level"] == "High Risk").sum()
+                high_risk = (results_df["Risk Level"] == "High Risk").sum()
                 st.metric("High Risk", f"{high_risk}", delta=f"{high_risk/total*100:.1f}%")
             
             st.markdown("<div class='custom-divider'></div>", unsafe_allow_html=True)
@@ -288,7 +288,7 @@ if uploaded_file is not None:
             
             with col1:
                 # Prediction distribution pie chart
-                pred_counts = results_df["prediction"].value_counts()
+                pred_counts = results_df["Prediction"].value_counts()
                 fig_pred = px.pie(
                     values=pred_counts.values,
                     names=pred_counts.index,
@@ -307,7 +307,7 @@ if uploaded_file is not None:
             
             with col2:
                 # Risk level distribution bar chart
-                risk_counts = results_df["risk_level"].value_counts().reset_index()
+                risk_counts = results_df["Risk Level"].value_counts().reset_index()
                 risk_counts.columns = ["Risk Level", "Count"]
                 fig_risk = px.bar(
                     risk_counts,
@@ -329,12 +329,12 @@ if uploaded_file is not None:
             # --- PROBABILITY DISTRIBUTION ---
             fig_prob = px.histogram(
                 results_df,
-                x="pass_probability",
+                x="Pass Probability",
                 nbins=20,
                 title="📊 Pass Probability Distribution",
                 color_discrete_sequence=["#00B4D8"],
                 opacity=0.8,
-                labels={"pass_probability": "Pass Probability"},
+                labels={"Pass Probability": "Pass Probability"},
             )
             fig_prob.update_layout(
                 paper_bgcolor="rgba(0,0,0,0)",
@@ -377,12 +377,12 @@ if uploaded_file is not None:
             # Save each prediction to the history database
             saved_count = 0
             for _, row in results_df.iterrows():
-                student_data = row.drop(["prediction", "pass_probability", "risk_level"]).to_dict()
+                student_data = row.drop(["Prediction", "Pass Probability", "Risk Level"]).to_dict()
                 save_prediction(
                     student_data=student_data,
-                    prediction=1 if row["prediction"] == "Pass" else 0,
-                    risk_level=row["risk_level"],
-                    probability=row["pass_probability"],
+                    prediction=1 if row["Prediction"] == "Pass" else 0,
+                    risk_level=row["Risk Level"],
+                    probability=row["Pass Probability"],
                     recommendations=[]
                 )
                 saved_count += 1

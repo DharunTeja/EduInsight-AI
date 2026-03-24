@@ -19,6 +19,9 @@ import streamlit as st
 import os
 import sys
 import pandas as pd
+from streamlit_option_menu import option_menu
+from streamlit_lottie import st_lottie
+import requests
 
 # Add project root to path for imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -233,15 +236,39 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
+    
+    /* Center lottie */
+    .lottie-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: -30px;
+    }
 </style>
 """, unsafe_allow_html=True)
+
+# ============================================================
+# LOTTIE ANIMATIONS
+# ============================================================
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+lottie_education = load_lottieurl("https://lottie.host/809c91f5-1798-466d-9783-690a78601c4e/7yS8U3N9Rk.json")
 
 # ============================================================
 # HERO SECTION
 # ============================================================
 # The main welcome banner with project title and description
+if lottie_education:
+    st.markdown('<div class="lottie-container">', unsafe_allow_html=True)
+    st_lottie(lottie_education, height=200, key="edu_lottie")
+    st.markdown('</div>', unsafe_allow_html=True)
+
 st.markdown("""
-<div style="text-align: center; padding: 40px 0 20px 0;">
+<div style="text-align: center; padding: 10px 0 20px 0;">
     <div class="hero-title">🎓 EduInsight AI</div>
     <div class="hero-subtitle">
         Intelligent Academic Analytics Platform — Predict Performance • Identify Risk • Generate Recommendations

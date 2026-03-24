@@ -202,6 +202,7 @@ def predict_batch(students_df, model_bundle=None):
     
     # Add prediction columns to the original DataFrame
     results_df = pd.DataFrame(results)
+    results_df.columns = ["Prediction", "Pass Probability", "Risk Level"]
     output_df = pd.concat([students_df.reset_index(drop=True), results_df], axis=1)
     
     return output_df

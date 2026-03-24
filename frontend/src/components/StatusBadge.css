@@ -1,0 +1,25 @@
+.status-badge {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 4px;
+  transition: transform 0.2s ease;
+}
+
+.status-badge:hover {
+  transform: scale(1.04);
+}
+
+.status-active {
+  background: rgba(0, 200, 150, 0.15);
+  color: var(--accent-green);
+  border: 1px solid rgba(0, 200, 150, 0.3);
+}
+
+.status-inactive {
+  background: rgba(255, 75, 75, 0.15);
+  color: var(--accent-red);
+  border: 1px solid rgba(255, 75, 75, 0.3);
+}
